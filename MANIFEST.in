@@ -1,0 +1,2 @@
+recursive-include translatable_content/static *
+recursive-include translatable_content/templates *
