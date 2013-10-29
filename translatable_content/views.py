@@ -7,13 +7,18 @@ from models import TranslationModel
 from django.conf import settings
 
 
-def data(request,app, model, mid,field):
+def data(request,flag,app, model, mid,field):
 	languages = settings.LANGUAGES	
+
+			
 	if request.method == 'POST':
 		for lan in languages:
 			var =  unicode(request.POST[lan[0]])		
 			word, created = TranslationModel.objects.get_or_create(app_name = app, model_name = model, modelfield_name = field, model_id = mid, language_code = lan[0] )
-			word.translation_string = var
+			if flag == 'str':
+				word.translation_string = var
+			else:
+				word.translation_text = var	
 			word.save()	
 
 	recs = []
@@ -22,8 +27,11 @@ def data(request,app, model, mid,field):
 		trans = TranslationModel.objects.filter(app_name = app, model_name = model, modelfield_name = field, model_id = mid, language_code = lan[0] )
 		rec['language'] = lan
 		if trans:
-			rec['word'] = trans[0].translation_string
+			if flag == 'str':
+				rec['word'] = trans[0].translation_string
+			else:
+				rec['word'] = trans[0].translation_text	
 		else:
 			rec['word'] = ''	
 		recs.append(rec)	
-	return render_to_response('translatable_content/translation_data.html', {'app':app, 'model':model, 'mid':mid, 'field':field, 'languages':languages,'recs':recs },context_instance=RequestContext(request))
+	return render_to_response('translatable_content/translation_data.html', {'app':app, 'model':model, 'mid':mid, 'field':field, 'languages':languages,'recs':recs,'flag':flag },context_instance=RequestContext(request))

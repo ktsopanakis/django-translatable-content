@@ -12,3 +12,5 @@ class TranslationModel(models.Model):
 	language_code = models.CharField( max_length=5)
 	translation_string = models.CharField(max_length=250, blank=True, null =True)
 	translation_text = models.TextField(blank=True, null =True)
+
+

@@ -18,9 +18,15 @@ def translation(obj, field):
     lan = get_language()
     if lan >2:
     	lan =lan[0:2]
-    mm = TranslationModel.objects.get(app_name = app_name, model_name = model_name,modelfield_name = field, model_id = obj.id,language_code = lan)
+    
+    #mm = TranslationModel.objects.get(app_name = app_name, model_name = model_name,modelfield_name = field, model_id = obj.id,language_code = lan)
     try:
-    	mm = TranslationModel.objects.get(app_name = app_name, model_name = model_name,modelfield_name = field, model_id = obj.id,language_code = lan).translation_string
+    	if obj._meta.get_field(field).get_internal_type() == 'TranslatableStringField':
+    		mm = TranslationModel.objects.get(app_name = app_name, model_name = model_name,modelfield_name = field, model_id = obj.id,language_code = lan).translation_string
+    	else:
+    		mm = TranslationModel.objects.get(app_name = app_name, model_name = model_name,modelfield_name = field, model_id = obj.id,language_code = lan).translation_text
+    	if mm == '' or mm == None:
+    		mm = obj.__dict__[field]			
     except:
     	mm = obj.__dict__[field]
     return mm
