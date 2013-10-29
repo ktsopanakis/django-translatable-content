@@ -1,26 +1,54 @@
 <!DOCTYPE html>
+{% load i18n %}
 <html>
 <head>
-{% load i18n %}
-<link rel="stylesheet" type="text/css" href="/static/translatable_content/tablestyle.css" >
-</head>	
-<body>	
-<form action="{{ request.get_full_path }}" method="post" class="clearfix">{% csrf_token %}
-<table class="CSSTableGenerator">
-	<tr>
-		<th>{% trans  "Language" %}</th>
-		<th>{% trans "Translation String" %}</th>
-	</tr>
-	{% for rec in recs %}
-	<tr>
-		<td>{{ rec.language.1 }}</td>
-		<td><input id="id_{{ rec.language.0 }}" name="{{ rec.language.0}}" type="text" value="{{ rec.word }}"></td>
-	</tr>	
-	{% endfor %}
-	<tr>
-		<td><input type="submit" value="Submit"></td><td></td>
-	</tr>	
-</table>
-<form>
+<title></title>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/static/admin/css/ie.css" /><![endif]-->
+</head>
+<body class="change-form">
+
+<!-- Container -->
+<div id="container">
+    
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+	  	<h1 id="site-name">{% trans  "Translation Page" %}</h1>
+        </div>
+    </div>
+    <!-- END Header -->
+    
+    <!-- Content -->
+    <div id="content" class="colM">
+        <h1>{% trans  "Set the translations" %}</h1>
+        <div id="content-main">
+		<form action="{{ request.get_full_path }}" method="post" class="clearfix">{% csrf_token %}
+			<div>
+				<fieldset class="module aligned ">
+					{% for rec in recs %}
+					<div class="form-row ">
+						<div>
+							<label class="required">{{ rec.language.1 }}:</label>
+							<input id="id_{{ rec.language.0 }}" name="{{ rec.language.0}}" type="text" value="{{ rec.word }}" />
+						</div>
+					</div>
+					{% endfor %}    
+				</fieldset>
+				<div class="submit-row">
+					<input type="submit" value="{% trans "Save" %}" class="default" name="_save" />
+					<input type="submit" value="{% trans "Save and continue editing" %}" name="_continue" />
+				</div>
+			</div>
+		</form>
+	</div>
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
 </body>
 </html>
+
