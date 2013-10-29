@@ -9,8 +9,7 @@ class TranslatableTextWidget(forms.TextInput):
     def render(self, name, value, attrs=None):
         rendered = super(TranslatableTextWidget, self).render(name, value, attrs)
         return rendered + mark_safe(
-            u"""<div id="translate_text_%(name)s" class="translate_text"></div>
-            <a id=%(name)s class="trans" href="#">link here for translating the value: %(value)s</a> 
+            u"""<a id=%(name)s class="trans" href="#">link here for translating the value: %(value)s</a> 
             """ % {'name': name, 'value':value, 'attrs':attrs}
         )
 
