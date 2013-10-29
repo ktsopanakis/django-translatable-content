@@ -5,7 +5,7 @@ from django import template
 from datetime import date, timedelta
 from django.template.loader import get_template
 from django.template import Context
-from content_translation.models import TranslationModel
+from translatable_content.models import TranslationModel
 from django.utils.translation import get_language
 
 register = template.Library()
