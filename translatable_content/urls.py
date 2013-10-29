@@ -9,12 +9,6 @@ from django.conf import settings
 #if settings.DEBUG:
 urlpatterns = patterns('',
 	('^data/(?P<app>.+)/(?P<model>.+)/(?P<mid>.+)/(?P<field>.+)/$', 'content_translation.views.data'),
-	(r'^static/(?P<path>.*)$','django.views.static.serve',{}),
-)
 
-#urlpatterns += patterns('',
-#    # ... the rest of your URLconf goes here ...
-#	(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root':  settings.STATIC_ROOT}),
-# 
-# )
+)
 
