@@ -19,6 +19,29 @@ $( document ).ready(function() {
 });
 </script>
 
+<script type="text/javascript" src="/static/translatable_content/tinymce/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+tinymce.init({
+    selector: "textarea",
+    theme: "modern",
+    plugins: [
+        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+        "searchreplace wordcount visualblocks visualchars code fullscreen",
+        "insertdatetime media nonbreaking save table contextmenu directionality",
+        "emoticons template paste textcolor"
+    ],
+    toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+    toolbar2: "print preview media | forecolor backcolor emoticons",
+    image_advtab: true,
+    templates: [
+        {title: 'Test template 1', content: 'Test 1'},
+        {title: 'Test template 2', content: 'Test 2'}
+    ]
+});
+</script>
+
+
+
 </head>
 <body class="change-form">
 
@@ -43,11 +66,11 @@ $( document ).ready(function() {
 					{% for rec in recs %}
 					<div class="form-row ">
 						<div>
-							<label class="required">{{ rec.language.1 }}:</label>
+							<div class="required" style="font-weight:bold;font-size: 13px;">{{ rec.language.1 }}:</div>
 							{% if flag == 'str' %} 
 								<input id="id_{{ rec.language.0 }}" name="{{ rec.language.0}}" type="text" value="{{ rec.word }}">
 							{% else %}
-								<textarea id="id_{{ rec.language.0 }}" name="{{ rec.language.0}}" cols="40" rows="10">{{ rec.word }}</textarea>
+								<textarea id="id_{{ rec.language.0 }}" name="{{ rec.language.0}}" cols="40" rows="20">{{ rec.word }}</textarea>
 							{% endif %}
 						</div>
 					</div>

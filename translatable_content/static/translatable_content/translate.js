@@ -82,7 +82,7 @@ jQuery(document).ready(function () {
        direct_to ='/translatable_content/text/'+ app + '/' + model+ '/' + id+ '/' +field +'/';
        e.preventDefault();
         /* We pre-open the popup in the submit, since it was generated from a "click" event, so no popup block happens */
-        authWindow = window.open('about:blank', '', 'left=20,top=20,width=1000,height=500,toolbar=0,resizable=1');
+        authWindow = window.open('about:blank', '', 'left=20,top=20,width=1024,height=1000,toolbar=0,resizable=1');
         m_url = direct_to,
         $.ajax({
             url: m_url,
