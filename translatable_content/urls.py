@@ -8,7 +8,7 @@ from django.conf import settings
 
 #if settings.DEBUG:
 urlpatterns = patterns('',
-	('^data/(?P<app>.+)/(?P<model>.+)/(?P<mid>.+)/(?P<field>.+)/$', 'content_translation.views.data'),
+	('^data/(?P<app>.+)/(?P<model>.+)/(?P<mid>.+)/(?P<field>.+)/$', 'translatable_content.views.data'),
 
 )
 

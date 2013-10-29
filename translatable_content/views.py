@@ -26,4 +26,4 @@ def data(request,app, model, mid,field):
 		else:
 			rec['word'] = ''	
 		recs.append(rec)	
-	return render_to_response('content_translation/translation_data.html', {'app':app, 'model':model, 'mid':mid, 'field':field, 'languages':languages,'recs':recs },context_instance=RequestContext(request))
+	return render_to_response('translatable_content/translation_data.html', {'app':app, 'model':model, 'mid':mid, 'field':field, 'languages':languages,'recs':recs },context_instance=RequestContext(request))

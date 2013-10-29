@@ -25,9 +25,9 @@ jQuery(document).ready(function () {
        e.preventDefault();
         /* We pre-open the popup in the submit, since it was generated from a "click" event, so no popup block happens */
         authWindow = window.open('about:blank', '', 'left=20,top=20,width=700,height=500,toolbar=0,resizable=1');
-        m_url = '/content_translation/data/'+ app + '/' + model+ '/' + id+ '/' +this.id +'/',
+        m_url = '/translatable_content/data/'+ app + '/' + model+ '/' + id+ '/' +this.id +'/',
         $.ajax({
-            url: '/content_translation/data/'+ app + '/' + model+ '/' + id+ '/' +this.id +'/',
+            url: '/translatable_content/data/'+ app + '/' + model+ '/' + id+ '/' +this.id +'/',
             //type: "POST",
             //data: {"json": JSON.stringify({"url": 'http://' + e.target.value + '.com'})}
 //            success: function (url) {

@@ -19,6 +19,6 @@ class TranslatableTextWidget(forms.TextInput):
 #        	'translate.css',
 #        
 #        )
-        js = ('http://code.jquery.com/jquery-1.9.1.js','http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js','/static/content_translation/translate.js')
+        js = ('http://code.jquery.com/jquery-1.9.1.js','http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js','/static/translatable_content/translate.js')
 
 
